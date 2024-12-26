@@ -7,10 +7,17 @@ var speed = 200
 func _ready():
 	pass
 	
-func _process(delta):
 	player = get_tree().get_nodes_in_group("PJ")[0]
 	
-	if player != null:
-		velocity = position - player.position * delta
+	
+func _process(delta):
+
+	if position < player.position:
+		position.y += player.position.y * delta * 2
+		position.x += player.position.x * delta * 2
 		
-	move_and_slide(velocity)
+	if position > player.position:
+		position.y -= player.position.y * delta * 2
+		position.x -= player.position.x * delta * 2
+
+	move_and_slide(position)

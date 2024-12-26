@@ -1,10 +1,9 @@
 extends Node2D
 
 var player = preload("res://Scenes/Characters/PJ.tscn").instance()
-var enemy = preload("res://Scenes/Characters/Enemy.tscn").instance()
 
 var oleada = 0
-var enemies = 0
+var enemies_spawn = 0
 var ini_oleada = false
 var time_spawn = 5
 
@@ -20,46 +19,55 @@ func _process(delta):
 	cuenta_atras.text = str(timer_spawn.time_left)
 	
 	match oleada:
-		0:
-			if ini_oleada:
-				ini_oleada = false
-				enemies = 10
-				spawn_enemies()
-			
 		1:
 			if ini_oleada:
 				ini_oleada = false
-				enemies = 15
+				enemies_spawn = 10
 				spawn_enemies()
+				GlobalPlayerInteraction.enemies = enemies_spawn
 		2:
 			if ini_oleada:
 				ini_oleada = false
-				enemies = 25
+				enemies_spawn = 15
 				spawn_enemies()
+				GlobalPlayerInteraction.enemies = enemies_spawn
 		3:
 			if ini_oleada:
 				ini_oleada = false
-				enemies = 35
+				enemies_spawn = 25
 				spawn_enemies()
+				GlobalPlayerInteraction.enemies = enemies_spawn
 		4:
 			if ini_oleada:
 				ini_oleada = false
-				enemies = 50
+				enemies_spawn = 35
 				spawn_enemies()
+				GlobalPlayerInteraction.enemies = enemies_spawn
+		5:
+			if ini_oleada:
+				ini_oleada = false
+				enemies_spawn = 50
+				spawn_enemies()
+				GlobalPlayerInteraction.enemies = enemies_spawn
 			
-	print(str(enemies))
+	if GlobalPlayerInteraction.enemies == 0 && timer_oleada.time_left == 0:
+		timer_oleada.start(20)
+			
+	print(str(oleada))
 
 func spawn_enemies():
-	if enemies > 0:
+	if enemies_spawn > 0:
 		timer_spawn.start(time_spawn)
 	
 
 func _on_TimerOleada_timeout():
 	print("lo iso")
+	oleada += 1
 	ini_oleada = true
 
 
 func _on_TimerSpawn_timeout():
-	enemies -= 1
+	var enemy = preload("res://Scenes/Characters/Enemy.tscn").instance()
+	enemies_spawn -= 1
 	spawn_enemies()
-	add_child(enemy)
+	get_node("Instancias_Mobs").add_child(enemy)
