@@ -8,12 +8,10 @@ height = 21.753
 
 [sub_resource type="CircleShape2D" id=2]
 
-[node name="Enemy" type="KinematicBody2D"]
-collision_layer = 4
+[node name="Bala" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color( 0.717647, 0.0627451, 0.0627451, 1 )
 position = Vector2( -8.79169e-07, 4.76837e-07 )
 scale = Vector2( 1.03831, 0.919414 )
 mesh = SubResource( 1 )

@@ -10,6 +10,12 @@ func _ready():
 func _process(delta):
 	move(delta)
 
+	if Input.is_action_just_pressed("disparar"):
+		var bala = preload("res://Scenes/Characters/Bala.tscn").instance()
+		get_parent().add_child(bala)
+		
+		bala.position -= get_global_mouse_position()
+		
 func move(delta):
-	velocity = Input.get_vector("ui_left","ui_right","ui_up","ui_down") * speed * delta
+	velocity = Input.get_vector("A","D","W","S") * speed * delta
 	move_and_slide(velocity)

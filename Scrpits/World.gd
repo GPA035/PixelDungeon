@@ -16,13 +16,13 @@ func _ready():
 	timer_oleada.start(1)
 
 func _process(delta):
-	cuenta_atras.text = str(timer_spawn.time_left)
+	cuenta_atras.text = str(Engine.get_frames_per_second())
 	
 	match oleada:
 		1:
 			if ini_oleada:
 				ini_oleada = false
-				enemies_spawn = 10
+				enemies_spawn = 2
 				spawn_enemies()
 				GlobalPlayerInteraction.enemies = enemies_spawn
 		2:
@@ -56,8 +56,10 @@ func _process(delta):
 	print(str(oleada))
 
 func spawn_enemies():
-	if enemies_spawn > 0:
+	if enemies_spawn >= 1:
 		timer_spawn.start(time_spawn)
+	else:
+		timer_spawn.stop()
 	
 
 func _on_TimerOleada_timeout():

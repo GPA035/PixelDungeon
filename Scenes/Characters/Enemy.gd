@@ -3,6 +3,7 @@ extends KinematicBody2D
 var player = null
 var velocity = Vector2()
 var speed = 200
+var vida = 10
 
 func _ready():
 	pass
@@ -11,13 +12,27 @@ func _ready():
 	
 	
 func _process(delta):
-
-	if position < player.position:
-		position.y += player.position.y * delta * 2
-		position.x += player.position.x * delta * 2
+	if vida <= 0:
+		GlobalPlayerInteraction.enemies -= 1
+		self.queue_free()
 		
-	if position > player.position:
-		position.y -= player.position.y * delta * 2
-		position.x -= player.position.x * delta * 2
+func _physics_process(delta):
+	if player != null:
+		velocity = (player.position - position).normalized() * speed
 
-	move_and_slide(position)
+	move_and_slide(velocity, Vector2.UP)
+	
+func damage(dano):
+	vida -= dano
+
+
+func _on_TimerKill_timeout():
+	pass # Replace with function body.
+
+
+func _on_VisibilityEnabler2D_screen_entered():
+	pass # Replace with function body.
+
+
+func _on_VisibilityEnabler2D_screen_exited():
+	pass # Replace with function body.
