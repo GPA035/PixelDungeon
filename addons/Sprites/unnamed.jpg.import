@@ -2,16 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unnamed.jpg-d40ded2b8841639325991ef91e15d156.stex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://addons/Sprites/unnamed.jpg"
-dest_files=[ "res://.import/unnamed.jpg-d40ded2b8841639325991ef91e15d156.stex" ]
-
 [params]
 
 compress/mode=0

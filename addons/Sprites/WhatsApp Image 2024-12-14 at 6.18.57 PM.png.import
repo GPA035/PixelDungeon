@@ -2,16 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WhatsApp Image 2024-12-14 at 6.18.57 PM.png-d8d9060b89e1d7b72e490501a9c7d59e.stex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://addons/Sprites/WhatsApp Image 2024-12-14 at 6.18.57 PM.png"
-dest_files=[ "res://.import/WhatsApp Image 2024-12-14 at 6.18.57 PM.png-d8d9060b89e1d7b72e490501a9c7d59e.stex" ]
-
 [params]
 
 compress/mode=0

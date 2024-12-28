@@ -12,7 +12,7 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("disparar"):
 		var bala = preload("res://Scenes/Characters/Bala.tscn").instance()
-		get_parent().add_child(bala)
+		add_child(bala)
 		
 		bala.position -= get_global_mouse_position()
 		
