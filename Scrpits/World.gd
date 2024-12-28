@@ -16,8 +16,6 @@ func _ready():
 	timer_oleada.start(1)
 
 func _process(delta):
-	
-	## Estado del mapa
 	cuenta_atras.text = str(Engine.get_frames_per_second())
 	
 	match oleada:
@@ -53,7 +51,7 @@ func _process(delta):
 				GlobalPlayerInteraction.enemies = enemies_spawn
 			
 	if GlobalPlayerInteraction.enemies == 0 && timer_oleada.time_left == 0:
-		timer_oleada.start(3)
+		timer_oleada.start(20)
 			
 	print(str(oleada))
 

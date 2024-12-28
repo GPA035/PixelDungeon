@@ -36,10 +36,3 @@ func _on_VisibilityEnabler2D_screen_entered():
 
 func _on_VisibilityEnabler2D_screen_exited():
 	pass # Replace with function body.
-
-
-func _on_Area2D_body_entered(body):
-	if body.is_in_group("bala"):
-		GlobalPlayerInteraction.enemies -= 1
-		queue_free()
-		
